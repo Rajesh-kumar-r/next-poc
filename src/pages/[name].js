@@ -11,15 +11,22 @@ function Blog({posts}) {
 }
 
 export async function getStaticProps({params}) {
-  const {name} = params;
-  const res = await fetch(`http://localhost:8080/${name}`)
-  const {data} = await res.json();
+  try {
+    const {name} = params;
+    const res = await fetch(`http://localhost:8080/${name}`)
+    const {data} = await res.json();
 
-  return {
-    props: {
-      posts: data,
-    },
-    revalidate: 1000
+    return {
+      props: {
+        posts: data,
+      },
+    }
+  } catch (e) {
+    return {
+      props: {
+        posts: {name: 'failed', count: 0},
+      },
+    }
   }
 }
 
