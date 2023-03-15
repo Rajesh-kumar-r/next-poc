@@ -13,7 +13,7 @@ function Blog({posts}) {
 export async function getStaticProps({params}) {
   try {
     const {name} = params;
-    const res = await fetch(`http://localhost:8080/${name}`)
+    const res = await fetch(`https://node-demo-next.onrender.com/${name}`)
     const {data} = await res.json();
 
     return {

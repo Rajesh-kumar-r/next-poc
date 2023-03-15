@@ -10,7 +10,7 @@ function Blog({posts}) {
 
 export async function getStaticProps() {
   try {
-    const res = await fetch('http://localhost:8080/initial');
+    const res = await fetch('https://node-demo-next.onrender.com/initial');
     const {data} = await res.json();
 
     return {
